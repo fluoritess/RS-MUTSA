@@ -267,7 +267,7 @@ def fit_one_epoch(model_train, model,model_train_unlabel,ema_model, loss_history
             _,_,W,H=imgs_unlabel.shape
             attn_output = F.interpolate(attn_output, size=(W, H), mode='bilinear', align_corners=True)
             attn_loss = criterion_u(attn_output, pseudo_label)*0.25
-            #######################################################################################################
+            #######################################################################################
             #----------------------#
             #   计算损失
             #----------------------#
