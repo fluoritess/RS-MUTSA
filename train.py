@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     lr_decay_type       = 'cos'
 
-    save_period         = 5
+    save_period         = 1
 
     save_dir            = 'logs'
 
