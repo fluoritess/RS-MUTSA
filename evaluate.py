@@ -31,8 +31,8 @@ if __name__ == "__main__":
     #-------------------------------------------------------#
     VOCdevkit_path  = 'VOCdevkit'
 
-    image_ids       = open(os.path.join(VOCdevkit_path, "VOC2007/ImageSets/Segmentation/test.txt"),'r').read().splitlines()
-    gt_dir          = os.path.join(VOCdevkit_path, "VOC2007/SegmentationClass/")
+    image_ids       = open(os.path.join(VOCdevkit_path, "ImageSets/Segmentation/test.txt"),'r').read().splitlines()
+    gt_dir          = os.path.join(VOCdevkit_path, "SegmentationClass/")
     miou_out_path   = "miou_out"
     pred_dir        = os.path.join(miou_out_path, 'detection-results')
 
