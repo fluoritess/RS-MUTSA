@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
         print("Get predict result.")
         for image_id in tqdm(image_ids):
-            image_path  = os.path.join(VOCdevkit_path, "VOC2007/JPEGImages/"+image_id+".jpg")
+            image_path  = os.path.join(VOCdevkit_path, "JPEGImages/"+image_id+".jpg")
             image       = Image.open(image_path)
             image       = segformer.get_miou_png(image)
             image.save(os.path.join(pred_dir, image_id + ".png"))
