@@ -65,14 +65,6 @@ class SegFormer_Segmentation(object):
             #                 (128, 64, 12)]
             self.colors = [(255, 255, 255), (0, 0, 255), (0, 255, 255), (0, 255, 0), (255, 255, 0), (255, 0, 0)]
             # self.colors =[ [255, 248, 220],[100, 149, 237],[102, 205, 170],[205, 133, 63], [160, 32, 240],  [255, 64, 64], [139, 69, 19]]
-        # 0: [0, 0, 0],  # ignore
-        # 1: [255, 248, 220],  # background
-        # 2: [100, 149, 237],  # building
-        # 3: [102, 205, 170],  # road
-        # 4: [205, 133, 63],  # water
-        # 5: [160, 32, 240],  # barren
-        # 6: [255, 64, 64],  # forest
-        # 7: [139, 69, 19],  # agriculture
         else:
             hsv_tuples = [(x / self.num_classes, 1., 1.) for x in range(self.num_classes)]
             self.colors = list(map(lambda x: colorsys.hsv_to_rgb(*x), hsv_tuples))
