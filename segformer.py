@@ -94,17 +94,7 @@ class SegFormer_Segmentation(object):
             if self.cuda:
                 self.net = nn.DataParallel(self.net)
                 self.net = self.net.cuda()
-
-        self.ema_net = SegFormer(num_classes=self.num_classes, phi=self.phi, pretrained=False)
-
-        device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        self.ema_net.load_state_dict(torch.load(self.ema_model_path, map_location=device))
-        self.ema_net = self.ema_net.eval()
         print('{} model, and classes loaded.'.format(self.model_path))
-        if not onnx:
-            if self.cuda:
-                self.ema_net = nn.DataParallel(self.ema_net)
-                self.ema_net = self.ema_net.cuda()
 
     #---------------------------------------------------#
     #   检测图片
