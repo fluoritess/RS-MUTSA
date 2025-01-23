@@ -57,8 +57,6 @@ if __name__ == "__main__":
 
     pretrained      = True
 
-    model_path=""
-
     downsample_factor   = 16
 
     input_shape         = [512, 512]
@@ -87,7 +85,7 @@ if __name__ == "__main__":
 
     lr_decay_type       = 'cos'
 
-    save_period         = 1
+    save_period         = 5
 
     save_dir            = 'logs'
 
@@ -129,29 +127,6 @@ if __name__ == "__main__":
     if not pretrained:
         weights_init(model)
         weights_init(ema_model)
-    if model_path != '':
-        if local_rank == 0:
-            print('Load weights {}.'.format(model_path))
-        model_dict      = model.state_dict()
-        pretrained_dict = torch.load(model_path, map_location = device)
-        load_key, no_load_key, temp_dict = [], [], {}
-        for k, v in pretrained_dict.items():
-            if k in model_dict.keys() and np.shape(model_dict[k]) == np.shape(v):
-                temp_dict[k] = v
-                load_key.append(k)
-            else:
-                no_load_key.append(k)
-        model_dict.update(temp_dict)
-        # model_dict_unlabel.update(temp_dict)
-        model.load_state_dict(model_dict)
-        # model_dict_unlabel.load_state_dict(model_dict_unlabel)
-        #------------------------------------------------------#
-        #   显示没有匹配上的Key
-        #------------------------------------------------------#
-        if local_rank == 0:
-            print("\nSuccessful Load Key:", str(load_key)[:500], "……\nSuccessful Load Key Num:", len(load_key))
-            print("\nFail To Load Key:", str(no_load_key)[:500], "……\nFail To Load Key num:", len(no_load_key))
-            print("\n\033[1;33;44m温馨提示，head部分没有载入是正常现象，Backbone部分没有载入是错误的。\033[0m")
 
     #----------------------#
     #   记录Loss
@@ -216,7 +191,7 @@ if __name__ == "__main__":
 
     if local_rank == 0:
         show_config(
-            num_classes = num_classes, backbone = backbone, model_path = model_path, input_shape = input_shape, \
+            num_classes = num_classes, backbone = backbone, input_shape = input_shape, \
             Init_Epoch = Init_Epoch, Freeze_Epoch = Freeze_Epoch, UnFreeze_Epoch = UnFreeze_Epoch, Freeze_batch_size = Freeze_batch_size, Unfreeze_batch_size = Unfreeze_batch_size, Freeze_Train = Freeze_Train, \
             Init_lr = Init_lr, Min_lr = Min_lr, optimizer_type = optimizer_type, momentum = momentum, lr_decay_type = lr_decay_type, \
             save_period = save_period, save_dir = save_dir, num_workers = num_workers, num_train = num_train, num_val = num_val
