@@ -1,14 +1,12 @@
 import colorsys
 import copy
 import time
-
 import cv2
 import numpy as np
 import torch
 import torch.nn.functional as F
 from PIL import Image
 from torch import nn
-
 from nets.segformer import SegFormer
 from utils.utils import cvtColor, preprocess_input, resize_image, show_config
 from nets.ctsa import CTSA
