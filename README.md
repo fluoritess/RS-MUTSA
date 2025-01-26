@@ -21,7 +21,7 @@ opencv-python == 4.10.0.84
 scipy == 1.10.1
 ```
 
-### Dataset
+### Datasets
 
 Your file structure will be like:
 
