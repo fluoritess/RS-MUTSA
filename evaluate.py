@@ -3,7 +3,7 @@ import os
 from PIL import Image
 from tqdm import tqdm
 
-from segformer import SegFormer_Segmentation
+from segmentation import SegFormer_Segmentation
 from utils.utils_metrics import compute_mIoU, show_results
 
 '''
