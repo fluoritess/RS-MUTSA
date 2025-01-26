@@ -51,14 +51,14 @@ Dataset_path  = 'YourDataset'
 ---
 The used SegFormer's codes and pretrained weights are from https://github.com/bubbliiiing/segformer-pytorch.
  -->
-### Train
+### Training
 
 ---
 ```
 python3 train.py
 ```
 
-### Evaluate
+### Evaluating
 
 ---
 ```
