@@ -1,6 +1,6 @@
 # RS-MUCA
 
-The code implementation of the MUCA model.
+This repository is the implementation of the MUCA model.
 
 ### Environment
 
