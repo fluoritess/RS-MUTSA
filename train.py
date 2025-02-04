@@ -63,13 +63,13 @@ if __name__ == "__main__":
 
     Init_Epoch          = 0
 
-    Freeze_Epoch        = 2
+    Freeze_Epoch        = 5
 
-    Freeze_batch_size   = 2
+    Freeze_batch_size   = 8
 
-    UnFreeze_Epoch      = 160
+    UnFreeze_Epoch      = 300
 
-    Unfreeze_batch_size = 2
+    Unfreeze_batch_size = 4
 
     Freeze_Train        = True
 
