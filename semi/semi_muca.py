@@ -284,8 +284,8 @@ def fit_one_epoch(model_train, model,model_train_unlabel,ema_model, loss_history
             print('else')
         total_loss      += loss.item()
         suloss_item  += suloss.item()
-        consistency_loss_item+=consistency_loss.item()
-        attn_loss_item+=(attn_loss*0.25).item()
+        consistency_loss_item += consistency_loss.item()
+        attn_loss_item += attn_loss.item()
         if local_rank == 0:
             pbar.set_postfix(**{'total_loss': total_loss / (iteration + 1),
                                 'lr'        : get_lr(optimizer)})
