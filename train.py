@@ -1,27 +1,22 @@
 import os
 import datetime
-
 import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 import torch.distributed as dist
 import torch.optim as optim
 from torch.utils.data import DataLoader
-
 from nets.segformer_training import (get_lr_scheduler, set_optimizer_lr,
                                      weights_init)
 from utils.callbacks import LossHistory, EvalCallback
 from utils.dataloader_unlabel import DeeplabDatasetUnlabel, deeplab_dataset_collate_unbel
 from utils.dataloader import DeeplabDataset, deeplab_dataset_collate
 from utils.utils import download_weights, show_config
-
 from semi.semi_muca import fit_one_epoch
-
 from PIL import Image
 import random
 from utils.utils import cvtColor, preprocess_input
 from nets.segformer import SegFormer
-
 
 if __name__ == "__main__":
     #---------------------------------#
@@ -50,27 +45,37 @@ if __name__ == "__main__":
     #               可减少约一半的显存、需要pytorch1.7.1以上
     #---------------------------------------------------------------------#
     fp16            = True
-
+    # ---------------------------------------------------------------------#
+    #   数据集类别数量
+    # ---------------------------------------------------------------------#
     num_classes     = 5
-
+    # ---------------------------------------------------------------------#
+    # 选择segformer的backbone量级
+    # ---------------------------------------------------------------------#
     backbone        = "segformer_b2"
-
+    # ---------------------------------------------------------------------#
+    # 是否预训练
+    # ---------------------------------------------------------------------#
     pretrained      = True
 
     downsample_factor   = 16
-
+    # ---------------------------------------------------------------------#
+    # 输入数据集的图片大小
+    # ---------------------------------------------------------------------#
     input_shape         = [512, 512]
 
     Init_Epoch          = 0
 
-    Freeze_Epoch        = 2
+    Freeze_Epoch        = 10
 
-    Freeze_batch_size   = 2
+    Freeze_batch_size   = 8
 
-    UnFreeze_Epoch      = 160
+    UnFreeze_Epoch      = 300
 
-    Unfreeze_batch_size = 2
-
+    Unfreeze_batch_size = 4
+    # ---------------------------------------------------------------------#
+    #训练初始阶段是否采用冻结训练策略
+    # ---------------------------------------------------------------------#
     Freeze_Train        = True
 
     Init_lr             = 7e-3
@@ -86,11 +91,15 @@ if __name__ == "__main__":
     lr_decay_type       = 'cos'
 
     save_period         = 5
-
+    # ---------------------------------------------------------------------#
+    # checkpoint文件的保存地址
+    # ---------------------------------------------------------------------#
     save_dir            = 'logs'
 
     eval_flag           = True
-
+    # ---------------------------------------------------------------------#
+    # 每多少个epoch 进行一次验证并保存checkpoint
+    # ---------------------------------------------------------------------#
     eval_period         = 5
 
     Dataset_path  = 'YourDataset'
