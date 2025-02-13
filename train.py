@@ -63,13 +63,13 @@ if __name__ == "__main__":
 
     Init_Epoch          = 0
 
-    Freeze_Epoch        = 5
+    Freeze_Epoch        = 2
 
-    Freeze_batch_size   = 8
+    Freeze_batch_size   = 2
 
-    UnFreeze_Epoch      = 300
+    UnFreeze_Epoch      = 160
 
-    Unfreeze_batch_size = 4
+    Unfreeze_batch_size = 2
 
     Freeze_Train        = True
 
@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
     eval_period         = 5
 
-    VOCdevkit_path  = 'VOCdevkit'
+    Dataset_path  = 'VOCdevkit'
 
     dice_loss       = False
     #------------------------------------------------------------------#
@@ -179,11 +179,11 @@ if __name__ == "__main__":
     #---------------------------#
     #   读取数据集对应的txt
     #---------------------------#
-    with open(os.path.join(VOCdevkit_path, "ImageSets/Segmentation/train.txt"), "r") as f:
+    with open(os.path.join(Dataset_path, "ImageSets/Segmentation/train.txt"), "r") as f:
         train_lines_all = f.readlines()
-    with open(os.path.join(VOCdevkit_path, "ImageSets/Segmentation/train_5%.txt"), "r") as f:
+    with open(os.path.join(Dataset_path, "ImageSets/Segmentation/train_5%.txt"), "r") as f:
         train_lines = f.readlines()
-    with open(os.path.join(VOCdevkit_path, "ImageSets/Segmentation/test.txt"), "r") as f:
+    with open(os.path.join(Dataset_path, "ImageSets/Segmentation/test.txt"), "r") as f:
         val_lines = f.readlines()
     num_train = len(train_lines)
     num_val = len(val_lines)
@@ -256,9 +256,9 @@ if __name__ == "__main__":
         if epoch_step == 0 or epoch_step_val == 0:
             raise ValueError("数据集过小，无法继续进行训练，请扩充数据集。")
 
-        train_dataset   = DeeplabDataset(train_lines, input_shape, num_classes, True, VOCdevkit_path)
-        val_dataset     = DeeplabDataset(val_lines, input_shape, num_classes, False, VOCdevkit_path)
-        train_unlabel_dataset = DeeplabDatasetUnlabel(train_unlabel_lines, input_shape, num_classes, True, VOCdevkit_path)
+        train_dataset   = DeeplabDataset(train_lines, input_shape, num_classes, True, Dataset_path)
+        val_dataset     = DeeplabDataset(val_lines, input_shape, num_classes, False, Dataset_path)
+        train_unlabel_dataset = DeeplabDatasetUnlabel(train_unlabel_lines, input_shape, num_classes, True, Dataset_path)
 
         if distributed:
             train_sampler   = torch.utils.data.distributed.DistributedSampler(train_dataset, shuffle=True,)
@@ -288,7 +288,7 @@ if __name__ == "__main__":
         #   记录eval的map曲线
         #----------------------#
         if local_rank == 0:
-            eval_callback   = EvalCallback(model, input_shape, num_classes, val_lines, VOCdevkit_path, log_dir, Cuda, \
+            eval_callback   = EvalCallback(model, input_shape, num_classes, val_lines, Dataset_path, log_dir, Cuda, \
                                             eval_flag=eval_flag, period=eval_period)
         else:
             eval_callback   = None
