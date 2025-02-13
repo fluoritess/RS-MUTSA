@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
     eval_period         = 5
 
-    Dataset_path  = 'VOCdevkit'
+    Dataset_path  = 'YourDataset'
 
     dice_loss       = False
     #------------------------------------------------------------------#
