@@ -24,7 +24,7 @@ scipy == 1.10.1
 ### Datasets
 
 Your file structure will be like:
-
+![muca](muca.png)
 ---
 
 ```
