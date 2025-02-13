@@ -60,7 +60,7 @@ Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_
     └── segformer_backbone.pth
 ```
 
-### Train
+### Training
 
 ---
 
@@ -68,7 +68,7 @@ Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_
 python3 train.py
 ```
 
-### Evaluate
+### Evaluating
 
 ---
 ```
