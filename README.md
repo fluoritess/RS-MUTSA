@@ -1,7 +1,13 @@
 # RS-MUCA
 
-This repository is the implementation of the MUCA model.
-![muca](muca.png)
+The code implementation of the MUCA model.
+![muca](docs/muca.png)
+
+<p align="center">
+<img src="docs/msuc.png" width=42% height=35% class="center">
+<img src="docs/ctsa.png" width=57% height=35% class="center">
+</p>
+
 ### Environment
 
 ---
@@ -21,10 +27,12 @@ opencv-python == 4.10.0.84
 scipy == 1.10.1
 ```
 
-### Datasets
+### Dataset
+
+Your file structure will be like:
 
 ---
-Your file structure will be like:
+
 ```
 ├── [Your Dataset Path]
     ├── JPEGImages
@@ -44,21 +52,24 @@ Modify your dataset path in train.py
 Dataset_path  = 'YourDataset'
 `` 
 .
+For example, ``Potsdam_path  = 'Potsdam'`` .
 
-<!-- ### Pretrained Weights
-
----
-The used SegFormer's codes and pretrained weights are from https://github.com/bubbliiiing/segformer-pytorch.
- -->
-### Training
-
----
+### Pretrained Backbone
 Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_rAw). Code = ``tyjr``.
+```
+├── model_data
+    └── segformer_b2_backbone_weights.pth
+```
+
+### Train
+
+---
+
 ```
 python3 train.py
 ```
 
-### Evaluating
+### Evaluate
 
 ---
 ```
@@ -75,3 +86,4 @@ If you find it useful, please consider citing:
   year={2025}
 }
 ```
+
