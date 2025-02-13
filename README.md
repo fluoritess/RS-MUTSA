@@ -54,6 +54,7 @@ The used SegFormer's codes and pretrained weights are from https://github.com/bu
 ### Training
 
 ---
+Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_rAw). Code = ``tyjr``.
 ```
 python3 train.py
 ```
