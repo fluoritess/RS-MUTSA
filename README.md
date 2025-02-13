@@ -23,9 +23,8 @@ scipy == 1.10.1
 
 ### Datasets
 
-Your file structure will be like:
 ---
-
+Your file structure will be like:
 ```
 ├── [Your Dataset Path]
     ├── JPEGImages
