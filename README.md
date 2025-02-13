@@ -54,17 +54,11 @@ Dataset_path  = 'YourDataset'
 .
 For example, ``Potsdam_path  = 'Potsdam'`` .
 
-### Pretrained Backbone
-Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_rAw). Code = ``tyjr``.
-```
-├── model_data
-    └── segformer_b2_backbone_weights.pth
-```
 
 ### Train
 
 ---
-
+Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_rAw). Code = ``tyjr``.
 ```
 python3 train.py
 ```
