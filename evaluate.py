@@ -28,7 +28,7 @@ if __name__ == "__main__":
     #-------------------------------------------------------#
     #   数据集文件夹
     #-------------------------------------------------------#
-    Dataset_path  = 'VOCdevkit'
+    Dataset_path  = 'YourDataset'
 
     image_ids       = open(os.path.join(Dataset_path, "ImageSets/Segmentation/test.txt"),'r').read().splitlines()
     gt_dir          = os.path.join(Dataset_path, "SegmentationClass/")
