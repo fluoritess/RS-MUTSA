@@ -1,7 +1,7 @@
 # RS-MUCA
 
 This repository is the implementation of the MUCA model.
-
+![muca](muca.png)
 ### Environment
 
 ---
@@ -24,7 +24,6 @@ scipy == 1.10.1
 ### Datasets
 
 Your file structure will be like:
-![muca](muca.png)
 ---
 
 ```
