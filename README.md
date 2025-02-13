@@ -57,7 +57,7 @@ Dataset_path  = 'YourDataset'
 Download the pretrained [Segformer](https://pan.baidu.com/s/1tH4wdGnACtIuGOoXb0_rAw). Code = ``tyjr``.
 ```
 ├── model_data
-    └── pretrained.pth
+    └── segformer_backbone.pth
 ```
 
 ### Train
